@@ -53,7 +53,7 @@ class Produtos extends BaseController {
 
         $produto_model->insert($dados);
 
-        return redirect()->to('/produtos/listar?alert=successCreate');
+        return redirect()->to('/produtos/listar')->with('messageSuccessCreate', 'Produto cadastrado com sucesso!');
 
     }
 
@@ -63,7 +63,7 @@ class Produtos extends BaseController {
 
         $produto_model->where('ProdutoId', $ProdutoId)->delete();
 
-        return redirect()->to('/produtos/listar?alert=successDelete');
+        return redirect()->to('/produtos/listar')->with('messageSuccessDelete', 'Produto excluído com sucesso!');
     }
 
     public function editar() {
@@ -74,7 +74,7 @@ class Produtos extends BaseController {
 
         $produto_model->where('ProdutoId', $dados['ProdutoId'])->set($dados)->update();
 
-        return redirect()->to('/produtos/listar?alert=successEdit');
+        return redirect()->to('/produtos/listar')->with('messageSuccessEdit', 'Produto editado com sucesso!');
 
     }
 

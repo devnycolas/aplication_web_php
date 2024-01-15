@@ -24,21 +24,26 @@ class Register extends BaseController
 
         $validated = $this->validate(
             [
-                'fullname' => 'required',
-                'email' => 'required|valid_email',
-                'password' => 'required',
+                'fullname' => 'required|min_length[2]|max_length[50]',
+                'email' => 'required|valid_email|is_unique[users.email]',
+                'password' => 'required|min_length[6]|max_length[20]',
                 'retryPassword' => 'required|matches[password]',
             ],
             [
                 'fullname' => [
                     'required' => 'O campo nome é obrigatório',
+                    'min_length' => 'Número de caracteres insuficiente! Mínimo 2!',
+                    'max_length' => 'Limite de caracteres ultrapassado! Máximo 50!',
                 ],
                 'email' => [
                     'required' => 'O e-mail é obrigatório',    
-                    'valid_email' => 'Por favor coloque um e-mail válido',    
+                    'valid_email' => 'Por favor coloque um e-mail válido',
+                    'is_unique' => 'E-mail já cadastrado no sistema',
                 ],
                 'password' => [
                     'required' => 'A senha é obrigatória',
+                    'min_length' => 'Número de caracteres insuficiente! Mínimo 6!',
+                    'max_length' => 'Limite de caracteres ultrapassado! Máximo 20!',
                 ],
                 'retryPassword' => [
                     'required' => 'A senha é obrigatória',

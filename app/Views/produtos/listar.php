@@ -117,35 +117,35 @@
                 </div>
             </div>
         </div>
-        <?php if(isset($_GET['alert']) && $_GET['alert'] == "successCreate"):  ?>
+        <?php if(session()->has('messageSuccessCreate')):  ?>
             <div class="row">
                 <div class="col-12">
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <h5><i class="icon fas fa-check"></i> Sucesso!</h5>
-                        Produto cadastrado com sucesso!
+                        <?php echo session()->getFlashdata('messageSuccessCreate') ?? '' ?>
                     </div>
                 </div>
             </div>
         <?php  endif; ?>
-        <?php if(isset($_GET['alert']) && $_GET['alert'] == "successDelete"):  ?>
+        <?php if(session()->has('messageSuccessDelete')):  ?>
             <div class="row">
                 <div class="col-12">
                     <div class="alert alert-warning alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <h5><i class="icon fas fa-check"></i> Deletado!</h5>
-                        Produto excluído com sucesso!
+                        <?php echo session()->getFlashdata('messageSuccessDelete') ?? '' ?>
                     </div>
                 </div>
             </div>
         <?php  endif; ?>
-        <?php if(isset($_GET['alert']) && $_GET['alert'] == "successEdit"):  ?>
+        <?php if(session()->has('messageSuccessEdit')):  ?>
             <div class="row">
                 <div class="col-12">
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <h5><i class="icon fas fa-check"></i> Editado!</h5>
-                        Produto editado com sucesso!
+                        <?php echo session()->getFlashdata('messageSuccessEdit') ?? '' ?>
                     </div>
                 </div>
             </div>
