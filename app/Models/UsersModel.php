@@ -16,6 +16,7 @@ class UsersModel extends Model
         'fullname',
         'email',
         'password',
+        'is_admin',
     ];
 
     // Dates
