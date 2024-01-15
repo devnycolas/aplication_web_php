@@ -79,6 +79,7 @@ class Login extends BaseController
             'user_id' => $user['user_id'],
             'fullname' => $user['fullname'],
             'email' => $user['email'],
+            'is_admin' => $user['is_admin'],
         ];
 
         $session->set($sessionData);

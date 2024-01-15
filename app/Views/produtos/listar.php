@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-novo-produto">
+<div class="modal fade" id="modal-novo-produto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form action="/produtos/cadastrar" method="post">
@@ -110,7 +110,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-novo-produto">
+                        <button type="button" class="btn btn-info" id="btn-novo-produto">
                             <i class="fas fa-plus-circle"></i> Novo Produto
                         </button>
                     </div>
