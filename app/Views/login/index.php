@@ -73,12 +73,13 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                <div class="row mt-2">
+                <div class="row mt-2 mb-3">
                     <div class="col-12">
                         <a href="/register" class="btn btn-primary btn-block">CADASTRAR</a>
                     </div>
                     <!-- /.col -->
                 </div>
+                <a href="/forgot/password" class="text-center">Esqueci minha senha</a>
             </div>
             <!-- /.card-body -->
         </div>
