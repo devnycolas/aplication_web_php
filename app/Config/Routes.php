@@ -25,3 +25,5 @@ $routes->post('/register/autenticar', 'Register::autenticar', ['as' => 'register
 // Recover Password Routes
 $routes->get('/forgot/password', 'Forgot::index', ['as' => 'forgot']);
 $routes->post('/forgot', 'Forgot::store', ['as' => 'forgot.store']);
+$routes->get('/reset/(:any)', 'Forgot::edit/$1', ['as' => 'forgot.edit']);
+$routes->post('/forgot/update/(:any)', 'Forgot::update/$1', ['as' => 'forgot.update']);

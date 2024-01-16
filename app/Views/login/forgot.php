@@ -69,7 +69,7 @@
     <?php if (session()->has('forgot_not_sent')) : ?>
         <script>
             $(function() {
-                toastr.error(<?php echo session()->getFlashdata('forgot_not_sent'); ?>);
+                toastr.error('<?php echo session()->getFlashdata('forgot_not_sent'); ?>');
             });
         </script>
     <?php endif; ?>
@@ -77,7 +77,31 @@
     <?php if (session()->has('forgot_sent')) : ?>
         <script>
             $(function() {
-                toastr.success(<?php echo session()->getFlashdata('forgot_sent'); ?>);
+                toastr.success('<?php echo session()->getFlashdata('forgot_sent'); ?>');
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->has('token_not_found')) : ?>
+        <script>
+            $(function() {
+                toastr.error('<?php echo session()->getFlashdata('token_not_found'); ?>');
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->has('updated')) : ?>
+        <script>
+            $(function() {
+                toastr.success('<?php echo session()->getFlashdata('updated'); ?>');
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->has('not_updated')) : ?>
+        <script>
+            $(function() {
+                toastr.error('<?php echo session()->getFlashdata('not_updated'); ?>');
             });
         </script>
     <?php endif; ?>

@@ -18,37 +18,45 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <a href="#" class="h1"><b>Code</b>Igniter</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
-            <form action="login.html" method="post">
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                <p class="login-box-msg">Você está a apenas um passo de criar sua nova senha, recupere sua senha agora.</p>
+                <form action="<?php echo url_to('forgot.update', $token) ?>" method="post">
+                <?php echo csrf_field(); ?>
+                    <div class="input-group mb-3">
+                        <input type="password" name="password" class="form-control" placeholder="Senha">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Confirm Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                    <div class="mb-3">
+                        <span class="text text-danger mb-3"><?php echo session()->getFlashdata('errors')['password'] ?? '' ?></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirme sua senha">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">Change password</button>
+                    <div class="mb-3">
+                        <span class="text text-danger mb-3"><?php echo session()->getFlashdata('errors')['confirmPassword'] ?? '' ?></span>
                     </div>
-                </div>
-            </form>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">Resetar Senha</button>
+                        </div>
+                    </div>
+                </form>
 
-            <p class="mt-3 mb-1">
-                <a href="/login">Login</a>
-            </p>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                </div>
             </div>
             <!-- /.login-card-body -->
         </div>
@@ -56,10 +64,10 @@
     <!-- /.login-box -->
 
     <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="<?= base_url('theme/plugins/jquery/jquery.min.js') ?>"></script>
     <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url('theme/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="<?= base_url('theme/dist/js/adminlte.min.js') ?>"></script>
 </body>
 </html>
