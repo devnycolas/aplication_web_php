@@ -101,6 +101,30 @@ class Forgot extends BaseController
 
     public function update($token) {
 
+        $validated = $this->validate(
+            [
+                'password' => 'required|min_length[6]|max_length[20]',
+                'confirmPassword' => 'required|matches[password]',
+            ],
+            [
+                'password' => [
+                    'required' => 'A senha é obrigatória',
+                    'min_length' => 'Número de caracteres insuficiente! Mínimo 6!',
+                    'max_length' => 'Limite de caracteres ultrapassado! Máximo 20!',
+                ],
+                'confirmPassword' => [
+                    'required' => 'A senha é obrigatória',
+                    'matches' => 'As senhas não coincidem',
+                ],
+            ]
+        );
+        
+        if (!$validated) {
+            
+            session()->setFlashdata('errors', $this->validator->getErrors());
+            return view('login/recover', ['token' => $token]);
+        }
+
         $password = $this->request->getGetPost('password');
 
         $forgotFound = $this->tokenIsValid($token);
