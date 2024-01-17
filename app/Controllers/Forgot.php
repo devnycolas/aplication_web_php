@@ -143,6 +143,6 @@ class Forgot extends BaseController
             session()->setFlashdata('updated', 'Senha alterada com sucesso!') :
             session()->setFlashdata('not_updated', 'Não foi possível alterar sua senha, tente novamente em alguns segundos!');
 
-        return redirect()->route('forgot');
+        return redirect()->route('login');
     }
 }

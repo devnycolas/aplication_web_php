@@ -76,7 +76,7 @@
             <span class="text text-danger mb-3"><?php echo session()->getFlashdata('errors')['password'] ?? '' ?></span>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" id="retryPassword" placeholder="Reintroduzir Senha" name="retryPassword">
+            <input type="password" class="form-control" id="retryPassword" placeholder="Confirmar Senha" name="retryPassword">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
