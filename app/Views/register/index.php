@@ -67,6 +67,11 @@
           <div class="input-group mb-3">
             <input type="password" class="form-control" id="password" placeholder="Senha" name="password" value="<?= old('password') ?>">
             <div class="input-group-append">
+              <button class="input-group-text" type="button" id="togglePassword">
+                <i class="fa fa-eye"></i>
+              </button>
+            </div>
+            <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
@@ -77,6 +82,11 @@
           </div>
           <div class="input-group mb-3">
             <input type="password" class="form-control" id="retryPassword" placeholder="Confirmar Senha" name="retryPassword" value="<?= old('retryPassword') ?>">
+            <div class="input-group-append">
+              <button class="input-group-text" type="button" id="toggleRetryPassword">
+                <i class="fa fa-eye"></i>
+              </button>
+            </div>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -95,7 +105,7 @@
           </div>
         </form>
 
-        <div class="d-none card mb-3">
+        <div class="card mb-3" id="passwordRequirements">
           <div class="card card-outline p-2">
             <ul class="">
               <li class="">
@@ -131,6 +141,53 @@
   <script src="<?= base_url('theme/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
   <!-- AdminLTE App -->
   <script src="<?= base_url('theme/dist/js/adminlte.min.js') ?>"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Esconder inicialmente a div de requisitos de senha
+      $('#passwordRequirements').hide();
+
+      // Monitorar eventos de clique no botão de olho
+      $('#togglePassword').on('click', function () {
+        var passwordInput = $('#password');
+
+        // Alternar a visibilidade da senha
+        if (passwordInput.attr('type') === 'password') {
+          passwordInput.attr('type', 'text');
+        } else {
+          passwordInput.attr('type', 'password');
+        }
+      });
+
+      $('#toggleRetryPassword').on('click', function () {
+        var retryPasswordInput = $('#retryPassword');
+
+        // Alternar a visibilidade da senha
+        if (retryPasswordInput.attr('type') === 'password') {
+          retryPasswordInput.attr('type', 'text');
+        } else {
+          retryPasswordInput.attr('type', 'password');
+        }
+      });
+
+      // Monitorar eventos de digitação no campo de senha
+      $('#password').on('input', function () {
+        var password = $(this).val();
+
+        // Verificar se os requisitos são atendidos
+        var lengthRequirement = password.length >= 12;
+        var numberRequirement = /\d/.test(password);
+        var specialCharRequirement = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+        // Atualizar a visibilidade da div de requisitos de senha
+        if (lengthRequirement && numberRequirement && specialCharRequirement) {
+          $('#passwordRequirements').hide();
+        } else {
+          $('#passwordRequirements').show();
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
