@@ -26,7 +26,7 @@ class Register extends BaseController
             [
                 'fullname' => 'required|min_length[2]|max_length[50]',
                 'email' => 'required|valid_email|is_unique[users.email]',
-                'password' => 'required|min_length[6]|max_length[20]',
+                'password' => 'required|min_length[12]|strong_password',
                 'retryPassword' => 'required|matches[password]',
             ],
             [
@@ -42,8 +42,8 @@ class Register extends BaseController
                 ],
                 'password' => [
                     'required' => 'A senha é obrigatória',
-                    'min_length' => 'Número de caracteres insuficiente! Mínimo 6!',
-                    'max_length' => 'Limite de caracteres ultrapassado! Máximo 20!',
+                    'min_length' => 'Número de caracteres insuficiente! Mínimo 12!',
+                    'strong_password' => 'A senha deve conter pelo menos um caractere especial e um número',
                 ],
                 'retryPassword' => [
                     'required' => 'A senha é obrigatória',
@@ -54,7 +54,8 @@ class Register extends BaseController
         
         if (!$validated) {
 
-            return redirect()->route('register')->with('errors', $this->validator->getErrors());
+            return redirect()->route('register')->withInput()->with('errors', $this->validator->getErrors());
+            // return redirect()->route('register')->with('errors', $this->validator->getErrors());
 
         }
 

@@ -43,7 +43,7 @@
 
         <form action="/register/autenticar" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" id="fullname" placeholder="Nome Completo" name="fullname">
+            <input type="text" class="form-control" id="fullname" placeholder="Nome Completo" name="fullname" value="<?= old('fullname') ?>">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -54,7 +54,7 @@
             <span class="text text-danger mb-3"><?php echo session()->getFlashdata('errors')['fullname'] ?? '' ?></span>
           </div>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" id="email" placeholder="E-mail" name="email">
+            <input type="email" class="form-control" id="email" placeholder="E-mail" name="email" value="<?= old('email') ?>">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -65,7 +65,7 @@
             <span class="text text-danger mb-3"><?php echo session()->getFlashdata('errors')['email'] ?? '' ?></span>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" id="password" placeholder="Senha" name="password">
+            <input type="password" class="form-control" id="password" placeholder="Senha" name="password" value="<?= old('password') ?>">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -76,7 +76,7 @@
             <span class="text text-danger mb-3"><?php echo session()->getFlashdata('errors')['password'] ?? '' ?></span>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" id="retryPassword" placeholder="Confirmar Senha" name="retryPassword">
+            <input type="password" class="form-control" id="retryPassword" placeholder="Confirmar Senha" name="retryPassword" value="<?= old('retryPassword') ?>">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -95,16 +95,28 @@
           </div>
         </form>
 
-        <!-- <div class="social-auth-links text-center">
-          <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i>
-            Sign up using Facebook
-          </a>
-          <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i>
-            Sign up using Google+
-          </a>
-        </div> -->
+        <div class="d-none card mb-3">
+          <div class="card card-outline p-2">
+            <ul class="">
+              <li class="">
+                <div class="">
+                  <span class="">Sua senha deve conter:</span>
+                  <ul class="">
+                      <li class="mb-1 mt-1" data-error-code="password-policy-length-at-least">
+                        <span class="">Pelo menos 12 caracteres de extensão</span>
+                      </li>
+                      <li class="mb-1" data-error-code="password-policy-length-at-least">
+                        <span class="">Pelo menos um número</span>
+                      </li>
+                      <li class="" data-error-code="password-policy-length-at-least">
+                        <span class="">Pelo menos um caracter especial</span>
+                      </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         <a href="/login" class="text-center">Já possuo uma conta</a>
       </div>
@@ -120,50 +132,5 @@
   <!-- AdminLTE App -->
   <script src="<?= base_url('theme/dist/js/adminlte.min.js') ?>"></script>
 
-  <!-- <script>
-    $(document).ready(function() {
-      // Desabilita o botão de cadastro inicialmente
-      $('#btnCadastro').prop('disabled', true).addClass('btn-secondary');
-
-      // Função para verificar se o formulário está válido
-      function validarFormulario() {
-        var fullname = $('#fullname').val();
-        var email = $('#email').val();
-        var password = $('#password').val();
-        var retryPassword = $('#retryPassword').val();
-
-        // Verifica as condições para habilitar o botão de cadastro
-        if (
-          fullname.length > 1 &&
-          validarEmail(email) &&
-          validarSenha(password) &&
-          retryPassword === password
-        ) {
-          $('#btnCadastro').prop('disabled', false).removeClass('btn-secondary');
-        } else {
-          $('#btnCadastro').prop('disabled', true).addClass('btn-secondary');
-        }
-      }
-
-      // Função para validar o formato do e-mail
-      function validarEmail(email) {
-        var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regexEmail.test(email);
-      }
-
-      // Função para validar a password
-      function validarSenha(password) {
-        // Pelo menos uma letra maiúscula, uma minúsculas, um número,
-        // um caracter especial e mais de 6 caracteres
-        var regexSenha = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/;
-        return regexSenha.test(password);
-      }
-
-      // Adiciona eventos de input nos campos para chamar a função de validação
-      $('#fullname, #email, #password, #retryPassword').on('input', function() {
-        validarFormulario();
-      });
-    });
-  </script> -->
 </body>
 </html>
