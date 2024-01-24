@@ -44,6 +44,7 @@
                 <?php endif; ?>
 
                 <form action="/login/autenticar" method="post">
+                <?php echo csrf_field(); ?>
                     <div class="input-group mb-2">
                         <input type="email" class="form-control" placeholder="Digite seu e-mail" name="email">
                         <div class="input-group-append">

@@ -42,6 +42,7 @@
         <p class="login-box-msg">Cadastro de Novo Usuário</p>
 
         <form action="/register/autenticar" method="post">
+          <?php echo csrf_field(); ?>
           <div class="input-group mb-3">
             <input type="text" class="form-control" id="fullname" placeholder="Nome Completo" name="fullname" value="<?= old('fullname') ?>">
             <div class="input-group-append">
