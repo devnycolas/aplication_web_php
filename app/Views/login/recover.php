@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="<?= base_url('theme/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('theme/dist/css/adminlte.min.css') ?>">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="<?= base_url('theme/plugins/toastr/toastr.min.css') ?>">
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
@@ -69,5 +71,15 @@
     <script src="<?= base_url('theme/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('theme/dist/js/adminlte.min.js') ?>"></script>
+    <!-- Toastr -->
+    <script src="<?= base_url('theme/plugins/toastr/toastr.min.js') ?>"></script>
+
+    <?php if (session()->has('messageThrottle')) : ?>
+        <script>
+            $(function() {
+                toastr.error('<?php echo session()->getFlashdata('messageThrottle'); ?>');
+            });
+        </script>
+    <?php endif; ?>
 </body>
 </html>

@@ -106,5 +106,13 @@
         </script>
     <?php endif; ?>
 
+    <?php if (session()->has('messageThrottle')) : ?>
+        <script>
+            $(function() {
+                toastr.error('<?php echo session()->getFlashdata('messageThrottle'); ?>');
+            });
+        </script>
+    <?php endif; ?>
+
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\Throttler;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -21,9 +22,13 @@ class Filters extends BaseConfig
     public array $aliases = [
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
+        'throttle'      => Throttler::class,
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'csrfThrottle' => [
+            CSRF::class, Throttler::class,
+        ],
     ];
 
     /**
